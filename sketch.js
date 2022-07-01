@@ -16,6 +16,8 @@ var obstaclesGroup,
 
 var score
 
+var message = false
+
 var gameOverImg, restartImg
 var jumpSound, checkPointSound, dieSound
 
@@ -74,12 +76,12 @@ function setup() {
   obstaclesGroup = createGroup()
   cloudsGroup = createGroup()
 
-  console.log('Olá' + 5)
-
   trex.setCollider('circle', 0, 0, 40)
   trex.debug = true
 
   score = 0
+
+  console.log('Function setup: ' + message)
 }
 
 function draw() {
@@ -87,7 +89,7 @@ function draw() {
   //exibir pontuação
   text('Pontuação: ' + score, 500, 50)
 
-  console.log('isto é ', gameState)
+  console.log('Function draw: ' + message)
 
   if (gameState === PLAY) {
     gameOver.visible = false
@@ -124,7 +126,6 @@ function draw() {
       gameState = END
     }
   } else if (gameState === END) {
-    console.log('hey')
     gameOver.visible = true
     restart.visible = true
 
@@ -140,6 +141,10 @@ function draw() {
 
     obstaclesGroup.setVelocityXEach(0)
     cloudsGroup.setVelocityXEach(0)
+
+    if (mousePressedOver(restart)) {
+      console.log('Reiniciar o Jogo')
+    }
   }
 
   //impedir que o trex caia
@@ -207,3 +212,5 @@ function spawnClouds() {
     cloudsGroup.add(cloud)
   }
 }
+
+function reset() {}

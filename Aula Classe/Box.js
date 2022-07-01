@@ -1,9 +1,9 @@
 class Box {
-  constructor() {
-    this.x = 200
-    this.y = 200
-    this.width = 40
-    this.height = 40
+  constructor(x, y, w, h) {
+    this.x = x
+    this.y = y
+    this.width = w
+    this.height = h 
   }
 
   display() {
