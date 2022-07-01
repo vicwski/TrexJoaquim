@@ -77,7 +77,7 @@ function setup() {
   cloudsGroup = createGroup()
 
   trex.setCollider('circle', 0, 0, 40)
-  trex.debug = true
+  // trex.debug = true
 
   score = 0
 
@@ -143,7 +143,7 @@ function draw() {
     cloudsGroup.setVelocityXEach(0)
 
     if (mousePressedOver(restart)) {
-      console.log('Reiniciar o Jogo')
+      reset()
     }
   }
 
@@ -213,4 +213,12 @@ function spawnClouds() {
   }
 }
 
-function reset() {}
+function reset() {
+  gameState = PLAY
+  obstaclesGroup.destroyEach()
+  cloudsGroup.destroyEach()
+
+  trex.changeAnimation('running')
+
+  score = 0
+}
